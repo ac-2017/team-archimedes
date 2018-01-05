@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://greenfield:greenfield@ds245347.mlab.com:45347/greenfield');
 
 let tweetSchema = mongoose.Schema({
   searchTerm: String,

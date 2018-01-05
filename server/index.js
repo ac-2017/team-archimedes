@@ -18,10 +18,10 @@ var getTweets = require('./helper.js').getTweets;
 var cronJob = require('./helper.js').cronJob;
 
 
-cron.schedule('*/30 * * * *', () => {
-  // call helper function every half-hour
-  cronJob();
-});
+// cron.schedule('*/30 * * * *', () => {
+//   // call helper function every half-hour
+//   cronJob();
+// });
 
 var sanitizeHTML = require('sanitize-html')
 
@@ -35,7 +35,6 @@ app.post('/search', function(req, res) {
   db.addToSearchTerms({searchTerm: searchTerm});
 
   getTweets(searchTerm, (data) => {
-  helper.getTweets(searchTerm, (data) => {
     res.send(data)
   });
 
@@ -71,6 +70,6 @@ app.get('/database', (req, res) => {
 
 });
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log('listening on port 3000!');
 });
